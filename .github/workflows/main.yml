@@ -10,5 +10,10 @@ jobs:
         with:
           java-version: '11'
           distribution: 'adopt'
-      - name: Build with Gradle
-        run: chmod +x gradlew && ./gradlew assembleDebug
+      - name: Build APK
+        run: gradle assembleDebug
+      - name: Upload APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: Materia-App
+          path: app/build/outputs/apk/debug/*.apk
